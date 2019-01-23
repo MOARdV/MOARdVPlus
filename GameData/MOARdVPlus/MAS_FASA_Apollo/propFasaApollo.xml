@@ -1,0 +1,1220 @@
+<PropConfig>
+	<!--
+	This file is a prop configuration template for the Prop Config utility
+	described on the MAS wiki at https://github.com/MOARdV/AvionicsSystems/wiki/Prop-Config
+
+	The tool and this XML file are used to quickly generate multiple props
+	without the tedious effort of copying config files and making small edits
+	while hoping you didn't overlook something.
+
+	Copyright (c) 2018 MOARdV
+
+	This file is licensed by MOARdV under the Creative Commons Attribution-Share Alike
+	4.0 International license (CC BY-SA) https://creativecommons.org/licenses/by-sa/4.0/
+	-->
+
+	<ToggleSwitch folder="RetroProps">
+		<!-- NASA-styled toggle switch with side guards and single collider - T1-G1-S -->
+		<style name="NASA Toggle Switch">
+			<MODEL id="0">
+				<comment>Base</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglBase</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="1">
+				<comment>Apollo toggle</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglLever_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="2">
+				<comment>Full Guard</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglGuard_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="3">
+				<comment>Single Collider</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCollider_SNGL</model>
+			</MODEL>
+			<COLLIDER_EVENT id="0">
+				<name>Collider</name>
+				<collider>SwitchCollider</collider>
+				<sound>ASET/ASET_Props/Sounds/RPB01</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<name>Lever Movement</name>
+				<transform>SwitchGrp</transform>
+				<startRotation>30,0,0</startRotation>
+				<endRotation>-30,0,0</endRotation>
+				<range>0, 1</range>
+				<blend>true</blend>
+				<cycleRate>1</cycleRate>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<name>Top Label</name>
+				<transform>TextTopObj</transform>
+				<fontSize>6.1</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<transformOffset>0.02526,-0.015</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>CAPTION</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<name>Plate Top Label</name>
+				<transform>TextPlateTopObj</transform>
+				<fontSize>5.5</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<transformOffset>0.01947,-0.012</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>TOP</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<name>Plate Bottom Label</name>
+				<transform>TextPlateBottomObj</transform>
+				<fontSize>5.5</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>UpperCenter</anchor>
+				<transformOffset>0.01947, 0.005</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>BOTTOM</text>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<name>Switch Mark Glow</name>
+				<transform>TumblerMarkObj</transform>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_ASET_SWITCHER_BORDER_POSITIVECOLOR</activeColor>
+				<blend>true</blend>
+			</COLOR_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_tggl_EVALight_T1_G1_S</name>
+			<style>NASA Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.ToggleActionGroup(10)</onClick>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetActionGroup(10)</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>EVA$$$LIGHT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>ON</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<text>OFF</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_DockingProbe_T1_G1_S</name>
+			<style>NASA Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.ToggleActionGroup(11)</onClick>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetActionGroup(11)</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>DOCKING$$$PROBE</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>RETRACT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<text>EXTEND</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_DockingLight_T1_G1_S</name>
+			<style>NASA Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.ToggleActionGroup(12)</onClick>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetActionGroup(12)</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>DOCKING$$$SPOT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>ON</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<text>OFF</text>
+			</TEXT_LABEL>
+		</prop>
+		
+		<style name="NASA Red Covered Toggle Switch">
+			<MODEL id="0">
+				<comment>Base</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglBase</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="1">
+				<comment>Apollo toggle</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglLever_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="4">
+				<comment>Black Cover</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCover_Type1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+				<texture>Tggl_COVER_Diffuse,ASET/ASET_Props/Control/Switch_Toggle_Modular/models/Tggl_COVER_Red</texture>
+			</MODEL>
+			<MODEL id="2">
+				<comment>Full Guard</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglGuard_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="3">
+				<comment>Single Collider</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCollider_SNGL</model>
+			</MODEL>
+			<COLLIDER_EVENT id="0">
+				<name>Collider</name>
+				<collider>SwitchCollider</collider>
+				<sound>ASET/ASET_Props/Sounds/RPB01</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<name>Collider</name>
+				<collider>CoverCollider</collider>
+				<onClick>fc.TogglePersistent("%AUTOID%-cover")</onClick>
+				<sound>ASET/ASET_Props/Sounds/OpenSwitchCover</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<ANIMATION_PLAYER id="0">
+				<name>Cover animation</name>
+				<animation>TgglCover_ANIM</animation>
+				<animationSpeed>1.0</animationSpeed>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%-cover")</variable>
+			</ANIMATION_PLAYER>
+			<ROTATION>
+				<name>Lever Movement</name>
+				<transform>SwitchGrp</transform>
+				<startRotation>30,0,0</startRotation>
+				<endRotation>-30,0,0</endRotation>
+				<range>0, 1</range>
+				<blend>true</blend>
+				<cycleRate>1</cycleRate>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<name>Top Label</name>
+				<transform>TextTopObj</transform>
+				<fontSize>6.1</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<transformOffset>0.02526,-0.015</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>CAPTION</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<name>Plate Bottom Label</name>
+				<transform>TextPlateBottomObj</transform>
+				<fontSize>5.5</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>UpperCenter</anchor>
+				<transformOffset>0.01947, 0.005</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>BOTTOM</text>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<name>Switch Mark Glow</name>
+				<transform>TumblerMarkObj</transform>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_ASET_SWITCHER_BORDER_POSITIVECOLOR</activeColor>
+				<blend>true</blend>
+			</COLOR_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_tggl_JettisonChuteCover_T1_G1_C1_S</name>
+			<style>NASA Red Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.SetPersistent("%AUTOID%", fc.SetActionGroup(17, true))</onClick>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%") == 0</variable>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%")</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>COVER$$$JETT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>JETTISON</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_JettisonTower_T1_G1_C1_S</name>
+			<style>NASA Red Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.SetPersistent("%AUTOID%", fc.SetActionGroup(14, true))</onClick>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%") == 0</variable>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%")</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>TWR JETT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>TWR JETT</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_JettisonSLA_T1_G1_C1_S</name>
+			<style>NASA Red Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.SetPersistent("%AUTOID%", fc.SetActionGroup(15, true))</onClick>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%") == 0</variable>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%")</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>SLA SEP</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>SLA SEP</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_JettisonLEM_T1_G1_C1_S</name>
+			<style>NASA Red Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.SetPersistent("%AUTOID%", fc.SetActionGroup(16, true))</onClick>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%") == 0</variable>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%")</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>SIVB LEM$$$DEPLOY</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>DEPLOY</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_JettisonSM_T1_G1_C1_S</name>
+			<style>NASA Red Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.SetPersistent("%AUTOID%", fc.SetActionGroup(18, true))</onClick>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%") == 0</variable>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%")</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>SM SEP</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>SM SEP</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_tggl_SMCargoBay_T1_G1_C1_S</name>
+			<style>NASA Black Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.ToggleActionGroup(19)</onClick>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetActionGroup(19)</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>CARGO BAY</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>CLOSE</text>
+			</TEXT_LABEL>
+		</prop>
+
+		<style name="NASA Yellow Covered Toggle Switch">
+			<MODEL id="0">
+				<comment>Base</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglBase</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="1">
+				<comment>Apollo toggle</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglLever_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="4">
+				<comment>Black Cover</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCover_Type1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+				<texture>Tggl_COVER_Diffuse,ASET/ASET_Props/Control/Switch_Toggle_Modular/models/Tggl_COVER_Diffuse</texture>
+			</MODEL>
+			<MODEL id="2">
+				<comment>Full Guard</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglGuard_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="3">
+				<comment>Single Collider</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCollider_SNGL</model>
+			</MODEL>
+			<COLLIDER_EVENT id="0">
+				<name>Collider</name>
+				<collider>SwitchCollider</collider>
+				<sound>ASET/ASET_Props/Sounds/RPB01</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<name>Collider</name>
+				<collider>CoverCollider</collider>
+				<onClick>fc.TogglePersistent("%AUTOID%-cover")</onClick>
+				<sound>ASET/ASET_Props/Sounds/OpenSwitchCover</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<ANIMATION_PLAYER id="0">
+				<name>Cover animation</name>
+				<animation>TgglCover_ANIM</animation>
+				<animationSpeed>1.0</animationSpeed>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%-cover")</variable>
+			</ANIMATION_PLAYER>
+			<ROTATION>
+				<name>Lever Movement</name>
+				<transform>SwitchGrp</transform>
+				<startRotation>30,0,0</startRotation>
+				<endRotation>-30,0,0</endRotation>
+				<range>0, 1</range>
+				<blend>true</blend>
+				<cycleRate>1</cycleRate>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<name>Top Label</name>
+				<transform>TextTopObj</transform>
+				<fontSize>6.1</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<transformOffset>0.02526,-0.015</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>CAPTION</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<name>Plate Bottom Label</name>
+				<transform>TextPlateBottomObj</transform>
+				<fontSize>5.5</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>UpperCenter</anchor>
+				<transformOffset>0.01947, 0.005</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>BOTTOM</text>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<name>Switch Mark Glow</name>
+				<transform>TumblerMarkObj</transform>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_ASET_SWITCHER_BORDER_POSITIVECOLOR</activeColor>
+				<blend>true</blend>
+			</COLOR_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_tggl_Abort_T1_G1_C1_S</name>
+			<style>NASA Yellow Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.Abort()</onClick>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetAbort()</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>MANUAL$$$ABORT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>ABORT</text>
+			</TEXT_LABEL>
+		</prop>
+
+		<style name="NASA Black Covered Toggle Switch">
+			<MODEL id="0">
+				<comment>Base</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglBase</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="1">
+				<comment>Apollo toggle</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglLever_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="4">
+				<comment>Black Cover</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCover_Type1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+				<texture>Tggl_COVER_Diffuse,ASET/ASET_Props/Control/Switch_Toggle_Modular/models/Tggl_COVER_Black</texture>
+			</MODEL>
+			<MODEL id="2">
+				<comment>Full Guard</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglGuard_Type_1</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="3">
+				<comment>Single Collider</comment>
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCollider_SNGL</model>
+			</MODEL>
+			<COLLIDER_EVENT id="0">
+				<name>Collider</name>
+				<collider>SwitchCollider</collider>
+				<sound>ASET/ASET_Props/Sounds/RPB01</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<name>Collider</name>
+				<collider>CoverCollider</collider>
+				<onClick>fc.TogglePersistent("%AUTOID%-cover")</onClick>
+				<sound>ASET/ASET_Props/Sounds/OpenSwitchCover</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<ANIMATION_PLAYER id="0">
+				<name>Cover animation</name>
+				<animation>TgglCover_ANIM</animation>
+				<animationSpeed>1.0</animationSpeed>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%-cover")</variable>
+			</ANIMATION_PLAYER>
+			<ROTATION>
+				<name>Lever Movement</name>
+				<transform>SwitchGrp</transform>
+				<startRotation>30,0,0</startRotation>
+				<endRotation>-30,0,0</endRotation>
+				<range>0, 1</range>
+				<blend>true</blend>
+				<cycleRate>1</cycleRate>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<name>Top Label</name>
+				<transform>TextTopObj</transform>
+				<fontSize>6.1</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<transformOffset>0.02526,-0.015</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>CAPTION</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<name>Plate Bottom Label</name>
+				<transform>TextPlateBottomObj</transform>
+				<fontSize>5.5</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>UpperCenter</anchor>
+				<transformOffset>0.01947, 0.005</transformOffset>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+				<text>BOTTOM</text>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<name>Switch Mark Glow</name>
+				<transform>TumblerMarkObj</transform>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_ASET_SWITCHER_BORDER_POSITIVECOLOR</activeColor>
+				<blend>true</blend>
+			</COLOR_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_tggl_CM_RCS_T1_G1_C1_S</name>
+			<style>NASA Black Covered Toggle Switch</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.ToggleActionGroup(13)</onClick>
+			</COLLIDER_EVENT>
+			<ROTATION>
+				<variable>fc.GetActionGroup(13)</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>CM$$$RCS</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>DISABLE</text>
+			</TEXT_LABEL>
+		</prop>
+	</ToggleSwitch>
+	<LabelText folder="RetroProps">
+		<style name="Label">
+			<MODEL>
+				<model>ASET/ASET_Props/Misc/LabelText/LabelText</model>
+			</MODEL>
+			<TEXT_LABEL>
+				<name>Name Plate</name>
+				<transform>TextObj</transform>
+				<fontSize>6.1</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>MiddleCenter</anchor>
+				<transformOffset>0.048,-0.006</transformOffset>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<emissive>active</emissive>
+				<passiveColor>COLOR_MOARdV_UnlitText</passiveColor>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+			</TEXT_LABEL>
+		</style>
+		<!-- ┌─┐ -->
+		<prop>
+			<name>MAS_FASA_LabelText_Pressure</name>
+			<style>Label</style>
+			<TEXT_LABEL>
+				<text>┌── PRESSURE ──┐</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_LabelText_Quantity</name>
+			<style>Label</style>
+			<TEXT_LABEL>
+				<text>┌── QUANTITY ──┐</text>
+			</TEXT_LABEL>
+		</prop>
+		<prop>
+			<name>MAS_FASA_LabelText_HGA</name>
+			<style>Label</style>
+			<TEXT_LABEL>
+				<text>┌────────── HIGH-GAIN ANTENNA ──────────┐</text>
+			</TEXT_LABEL>
+		</prop>
+
+	</LabelText>
+	<NasaGauge folder="RetroProps">
+		<!-- NASA single-arrow analog vertical gauge to emulate fuel pressure gauges -->
+		<style name="Pressure">
+			<MODEL>
+				<model>ASET/ASET_Props/Instruments/NASA_Gauge_Temperature/NASA_Gauge_Temperature</model>
+			</MODEL>
+			<ROTATION>
+				<name>Arrow Movement</name>
+				<transform>ArrowRightLoc</transform>
+				<startRotation>0,0,0</startRotation>
+				<endRotation>-43.57964,0,0</endRotation>
+				<range>0, 1</range>
+				<blend>true</blend>
+				<cycleRate>4</cycleRate>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<name>Label</name>
+				<transform>GaugeNameTextObj</transform>
+				<fontSize>1.9</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>MiddleCenter</anchor>
+				<transformOffset>0.0085, -0.0025</transformOffset>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_BlackPrintedText</passiveColor>
+			</TEXT_LABEL>
+			<COLOR_SHIFT>
+				<name>Instrument Backlight</name>
+				<transform>ArrowRightObj, GaugeScaleObj, LabelObj, ScaleSeg_0_10, ScaleSeg_10_50, ScaleSeg_50_90, ScaleSeg_90_100</transform>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_ASET_NASAGAUGESCALE_ACTIVECOLOR</activeColor>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+			</COLOR_SHIFT>
+			<TEXTURE_SHIFT id="0">
+				<name>Label Color</name>
+				<transform>LabelObj</transform>
+				<layers>_MainTex _Emissive</layers>
+				<startUV>0, 0</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="1">
+				<name>0% - 10% color</name>
+				<transform>ScaleSeg_0_10</transform>
+				<layers>_MainTex _Emissive</layers>
+				<!-- 0,0 = black | 0.0, -0.1 - yellow | 0.2, -0.1 - green | -0.2, 0.0 - white | -0.2, -0.1 - red | 0.2, 0.0 - grey -->
+				<startUV>0, 0</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="2">
+				<name>10% - 50% color</name>
+				<transform>ScaleSeg_10_50</transform>
+				<layers>_MainTex _Emissive</layers>
+				<!-- 0,0 = black | 0.0, -0.1 - yellow | 0.2, -0.1 - green | -0.2, 0.0 - white | -0.2, -0.1 - red | 0.2, 0.0 - grey -->
+				<startUV>0, 0</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="3">
+				<name>50% - 90% color</name>
+				<transform>ScaleSeg_50_90</transform>
+				<layers>_MainTex _Emissive</layers>
+				<!-- 0,0 = black | 0.0, -0.1 - yellow | 0.2, -0.1 - green | -0.2, 0.0 - white | -0.2, -0.1 - red | 0.2, 0.0 - grey -->
+				<startUV>0, 0</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="4">
+				<name>90% - 100% color</name>
+				<transform>ScaleSeg_90_100</transform>
+				<layers>_MainTex _Emissive</layers>
+				<!-- 0,0 = black | 0.0, -0.1 - yellow | 0.2, -0.1 - green | -0.2, 0.0 - white | -0.2, -0.1 - red | 0.2, 0.0 - grey -->
+				<startUV>0, 0</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="5">
+				<name>Blank Label</name>
+				<transform>LabelObj</transform>
+				<layers>_MainTex _Emissive</layers>
+				<startUV>0.5, 0.6</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="6">
+				<name>Arrow color</name>
+				<transform>ArrowRightObj</transform>
+				<layers>_MainTex _Emissive</layers>
+				<!-- 0,0 = red | x = 0.2, y = 0.0 - yellow | x = 0.4, y = 0.0 - green | x = 0.0, y = 0.1 - white | x = 0.2, y = 0.1 - black | x = 0.4, y = 0.1 - grey  -->
+				<startUV>0.0, 0.1</startUV>
+			</TEXTURE_SHIFT>
+			<TEXT_LABEL id="1">
+				<name>0% Label</name>
+				<transform>ZeroTextObj</transform>
+				<fontSize>2.25</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Left</alignment>
+				<anchor>MiddleLeft</anchor>
+				<transformOffset>0.0007, -0.002</transformOffset>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_BlackPrintedText</passiveColor>
+				<text>0</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<name>20% Label</name>
+				<transform>Value_2_TextObj</transform>
+				<fontSize>2.25</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Left</alignment>
+				<anchor>MiddleLeft</anchor>
+				<transformOffset>0.0007, -0.002</transformOffset>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_BlackPrintedText</passiveColor>
+				<text>100</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="3">
+				<name>40% Label</name>
+				<transform>Value_4_TextObj</transform>
+				<fontSize>2.25</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Left</alignment>
+				<anchor>MiddleLeft</anchor>
+				<transformOffset>0.0007, -0.002</transformOffset>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_BlackPrintedText</passiveColor>
+				<text>200</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="4">
+				<name>60% Label</name>
+				<transform>Value_6_TextObj</transform>
+				<fontSize>2.25</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Left</alignment>
+				<anchor>MiddleLeft</anchor>
+				<transformOffset>0.0007, -0.002</transformOffset>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_BlackPrintedText</passiveColor>
+				<text>300</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="5">
+				<name>80% Label</name>
+				<transform>Value_8_TextObj</transform>
+				<fontSize>2.25</fontSize>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Left</alignment>
+				<anchor>MiddleLeft</anchor>
+				<transformOffset>0.0007, -0.002</transformOffset>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_BlackPrintedText</passiveColor>
+				<text>400</text>
+			</TEXT_LABEL>
+		</style>
+		<prop>
+			<name>MAS_FASA_Gauge_LiquidFuelPressure</name>
+			<style>Pressure</style>
+			<ROTATION>
+				<variable>fc.Conditioned(fc.ResourcePercent("LiquidFuel") / (fc.ResourcePercent("LiquidFuel") + 0.5))</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>FUEL</text>
+			</TEXT_LABEL>
+			<TEXTURE_SHIFT id="1">
+				<startUV>-0.2, -0.1</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="4">
+				<startUV>-0.2, -0.1</startUV>
+			</TEXTURE_SHIFT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_Gauge_LiquidHydrogenPressure</name>
+			<style>Pressure</style>
+			<ROTATION>
+				<variable>fc.Conditioned(fc.ResourcePercent("LqdHydrogen") / (fc.ResourcePercent("LqdHydrogen") + 0.5))</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>LH2</text>
+			</TEXT_LABEL>
+			<TEXTURE_SHIFT id="1">
+				<startUV>-0.2, -0.1</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="4">
+				<startUV>-0.2, -0.1</startUV>
+			</TEXTURE_SHIFT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_Gauge_OxidizerPressure</name>
+			<style>Pressure</style>
+			<ROTATION>
+				<variable>fc.Conditioned(fc.ResourcePercent("Oxidizer") / (fc.ResourcePercent("Oxidizer") + 0.5))</variable>
+			</ROTATION>
+			<TEXT_LABEL id="0">
+				<text>OXIDIZER</text>
+			</TEXT_LABEL>
+			<TEXTURE_SHIFT id="1">
+				<startUV>-0.2, -0.1</startUV>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="4">
+				<startUV>-0.2, -0.1</startUV>
+			</TEXTURE_SHIFT>
+		</prop>
+	</NasaGauge>
+
+	<SignalLamp folder="RetroProps">
+		<style name="Signal Lamp">
+			<MODEL>
+				<model>ASET/ASET_Props/Instruments/ASET_SignalLamp/ASET_SignalLamp</model>
+			</MODEL>
+			<MODEL_SCALE id="0">
+				<name>Lamp Off</name>
+				<transform>LampOFFObj</transform>
+				<startScale>0, 0, 0</startScale>
+				<endScale>-1, -1, -1</endScale>
+				<variable>fc.Conditioned(1)</variable>
+			</MODEL_SCALE>
+			<MODEL_SCALE id="1">
+				<name>Lamp On</name>
+				<transform>LampObj</transform>
+				<startScale>-1,-1,-1</startScale>
+				<endScale>0, 0, 0</endScale>
+				<variable>fc.Conditioned(1)</variable>
+			</MODEL_SCALE>
+			<COLOR_SHIFT>
+				<name>Lamp Color</name>
+				<transform>LampObj</transform>
+				<passiveColor>COLOR_MOARdV_IndicatorLampOff</passiveColor>
+				<colorName>_EmissiveColor</colorName>
+			</COLOR_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_SignalLamp_1Engine</name>
+			<style>Signal Lamp</style>
+			<COLOR_SHIFT>
+				<activeColor>COLOR_MOARdV_IndicatorLampGreen</activeColor>
+				<variable>fc.Conditioned(fc.EngineCountActive() > 0)</variable>
+			</COLOR_SHIFT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_SignalLamp_2Engine</name>
+			<style>Signal Lamp</style>
+			<COLOR_SHIFT>
+				<activeColor>COLOR_MOARdV_IndicatorLampGreen</activeColor>
+				<variable>fc.Conditioned(fc.EngineCountActive() > 1)</variable>
+			</COLOR_SHIFT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_SignalLamp_3Engine</name>
+			<style>Signal Lamp</style>
+			<COLOR_SHIFT>
+				<activeColor>COLOR_MOARdV_IndicatorLampGreen</activeColor>
+				<variable>fc.Conditioned(fc.EngineCountActive() > 2)</variable>
+			</COLOR_SHIFT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_SignalLamp_4Engine</name>
+			<style>Signal Lamp</style>
+			<COLOR_SHIFT>
+				<activeColor>COLOR_MOARdV_IndicatorLampGreen</activeColor>
+				<variable>fc.Conditioned(fc.EngineCountActive() > 3)</variable>
+			</COLOR_SHIFT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_SignalLamp_5Engine</name>
+			<style>Signal Lamp</style>
+			<COLOR_SHIFT>
+				<activeColor>COLOR_MOARdV_IndicatorLampGreen</activeColor>
+				<variable>fc.Conditioned(fc.EngineCountActive() > 4)</variable>
+			</COLOR_SHIFT>
+		</prop>
+	</SignalLamp>
+	
+	<!-- Modern props -->
+	<PushButton folder="ModernProps">
+		<style name="SH02 C3R">
+			<!--
+			SH02 in the ModulePushButton_V0.2 documentation.
+			Horizontal split cap, single collider, full border with caption above.
+			Red protective cover
+			Top half backlit green, unlit text.  Default text "ON"
+			Bottom half text glows amber when active.  Default text "OFF"
+			-->
+			<MODEL id="0">
+				<model>ASET/ASET_Props/Control/Push_Button_Modular/models/pb_SplitHorizontal_Cap</model>
+				<texture>pb_Full_Cap_Black,ASET/ASET_Props/Control/Push_Button_Modular/models/pb_Full_Cap_Black</texture>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="2">
+				<model>ASET/ASET_Props/Control/Push_Button_Modular/models/pb_Collider</model>
+			</MODEL>
+			<MODEL id="3">
+				<model>ASET/ASET_Props/Control/Push_Button_Modular/models/pb_Cover03_RED</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<COLLIDER_EVENT id="0">
+				<collider>pb_Collider</collider>
+				<sound>ASET/ASET_Props/Sounds/pb_Push02</sound>
+				<volume>1</volume>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<collider>pb_Cover_Collider</collider>
+				<sound>ASET/ASET_Props/Sounds/OpenSwitchCover</sound>
+				<volume>1</volume>
+				<onClick>fc.TogglePersistent("%AUTOID%-cover")</onClick>
+			</COLLIDER_EVENT>
+			<ANIMATION_PLAYER id="0">
+				<name>Button press animation</name>
+				<animation>pb_PushAnim</animation>
+				<animationSpeed>1.0</animationSpeed>
+			</ANIMATION_PLAYER>
+			<ANIMATION_PLAYER id="1">
+				<name>Button press animation</name>
+				<animation>pb_Cover_Anim</animation>
+				<animationSpeed>1.0</animationSpeed>
+				<variable>fc.GetPersistentAsNumber("%AUTOID%-cover")</variable>
+			</ANIMATION_PLAYER>
+			<TEXT_LABEL id="0">
+				<name>Caption</name>
+				<transform>PanelTextTop_bklt</transform>
+				<fontSize>5.8</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<name>Upper Legend</name>
+				<transform>Legend_Upper</transform>
+				<fontSize>3.9</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>MiddleCenter</anchor>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_UnlitBlackText</passiveColor>
+				<text>ON</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<name>Lower Legend</name>
+				<transform>Legend_Lower</transform>
+				<fontSize>3.9</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>MiddleCenter</anchor>
+				<emissive>active</emissive>
+				<passiveColor>COLOR_MOARdV_PassiveBacklightText</passiveColor>
+				<activeColor>COLOR_MOARdV_IndicatorLampAmber</activeColor>
+				<text>OFF</text>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<name>Upper Panel</name>
+				<transform>pb_SH_TopLens_obj</transform>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_MOARdV_IndicatorPanelGreen</activeColor>
+			</COLOR_SHIFT>
+			<TEXTURE_SHIFT id="0">
+				<name>Upper Panel</name>
+				<transform>pb_SH_TopLens_obj</transform>
+				<startUV>0, 0</startUV>
+				<endUV>0, -0.5</endUV>
+				<layers>_Emissive</layers>
+			</TEXTURE_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_pb_SH02_C3R_ApolloCM_RCS</name>
+			<style>SH02 C3R</style>
+			<MODEL id="0">
+				<comment>ASET MPB SH02 style.  Toggles CM RCS.</comment>
+			</MODEL>
+			<COLLIDER_EVENT>
+				<onClick>fc.ToggleActionGroup(13)</onClick>
+			</COLLIDER_EVENT>
+			<ANIMATION_PLAYER>
+				<variable>fc.GetActionGroup(13)</variable>
+			</ANIMATION_PLAYER>
+			<TEXT_LABEL id="0">
+				<text>CM$$$RCS</text>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<variable>fc.GetActionGroup(13)</variable>
+			</COLOR_SHIFT>
+			<TEXTURE_SHIFT id="0">
+				<variable>fc.GetActionGroup(13)</variable>
+			</TEXTURE_SHIFT>
+			<TEXT_LABEL id="2">
+				<variable>1 - fc.GetActionGroup(13)</variable>
+			</TEXT_LABEL>
+		</prop>
+
+		<style name="SH03 DoubleCollider Dimmer">
+			<!--
+			SH03 in the ModulePushButton_V0.2 documentation.
+			Horizontal split cap, double collider, full border with caption.
+			Top half backlit green, unlit text.
+			Bottom half backlit green, unlit text.
+			-->
+			<MODEL id="0">
+				<model>ASET/ASET_Props/Control/Push_Button_Modular/models/pb_SplitHorizontal_Cap</model>
+				<texture>pb_Full_Cap_Black,ASET/ASET_Props/Control/Push_Button_Modular/models/pb_Full_Cap_Black</texture>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="1">
+				<model>ASET/ASET_Props/Control/Push_Button_Modular/models/pb_Bcklt_2</model>
+				<texture>Switch_TUMBLEDiffuse,ASET/ASET_Props/Control/Switch_Tumble/Switch_TUMBLEDiffuse</texture>
+			</MODEL>
+			<MODEL id="2">
+				<model>ASET/ASET_Props/Control/Switch_Toggle_Modular/models/TgglCollider_DBL</model>
+			</MODEL>
+			<COLLIDER_EVENT id="0">
+				<name>Collider</name>
+				<collider>SwitchColliderUP</collider>
+				<sound>ASET/ASET_Props/Sounds/pb_Push02</sound>
+				<volume>1</volume>
+				<autoRepeat>0.1</autoRepeat>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<name>Collider</name>
+				<collider>SwitchColliderDOWN</collider>
+				<sound>ASET/ASET_Props/Sounds/pb_Push02</sound>
+				<volume>1</volume>
+				<autoRepeat>0.1</autoRepeat>
+			</COLLIDER_EVENT>
+			<TEXT_LABEL id="0">
+				<name>Caption</name>
+				<transform>PanelTextTop_bklt</transform>
+				<fontSize>5.8</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>LowerCenter</anchor>
+				<emissive>active</emissive>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<blend>true</blend>
+				<activeColor>COLOR_ASET_SWITCHER_NAME_POSITIVECOLOR</activeColor>
+				<passiveColor>COLOR_ASET_SWITCHER_NAME_ZEROCOLOR</passiveColor>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<name>Upper Legend</name>
+				<transform>Legend_Upper</transform>
+				<fontSize>3.9</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>MiddleCenter</anchor>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_UnlitBlackText</passiveColor>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<name>Lower Legend</name>
+				<transform>Legend_Lower</transform>
+				<fontSize>3.9</fontSize>
+				<lineSpacing>0.9</lineSpacing>
+				<font>Liberation Sans</font>
+				<style>Bold</style>
+				<alignment>Center</alignment>
+				<anchor>MiddleCenter</anchor>
+				<emissive>never</emissive>
+				<passiveColor>COLOR_MOARdV_UnlitBlackText</passiveColor>
+			</TEXT_LABEL>
+			<COLOR_SHIFT id="0">
+				<name>Border</name>
+				<transform>GlowBorder</transform>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("Backlight"))</variable>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_ASET_SWITCHER_BORDER_POSITIVECOLOR</activeColor>
+				<blend>true</blend>
+			</COLOR_SHIFT>
+			<COLOR_SHIFT id="1">
+				<name>Upper Panel</name>
+				<transform>pb_SH_TopLens_obj</transform>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_MOARdV_IndicatorPanelGreen</activeColor>
+			</COLOR_SHIFT>
+			<COLOR_SHIFT id="2">
+				<name>Lower Panel</name>
+				<transform>pb_SH_BottomLens_obj</transform>
+				<passiveColor>0,0,0,255</passiveColor>
+				<activeColor>COLOR_MOARdV_IndicatorPanelGreen</activeColor>
+			</COLOR_SHIFT>
+			<TEXTURE_SHIFT id="0">
+				<name>Upper Panel</name>
+				<transform>pb_SH_TopLens_obj</transform>
+				<startUV>0, 0</startUV>
+				<endUV>0, -0.5</endUV>
+				<layers>_Emissive</layers>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="1">
+				<name>Lower Panel</name>
+				<transform>pb_SH_BottomLens_obj</transform>
+				<startUV>0, 0</startUV>
+				<endUV>0, -0.5</endUV>
+				<layers>_Emissive</layers>
+			</TEXTURE_SHIFT>
+		</style>
+		<prop>
+			<name>MAS_FASA_pb_SH03_B2_Cabin_Dimmer</name>
+			<style>SH03 DoubleCollider Dimmer</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.AddPersistentClamped("MAS_Generic_IntLight", fc.SetPersistent("%AUTOID%", 0.05), 0, 1)</onClick>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<onClick>fc.AddPersistentClamped("MAS_Generic_IntLight", fc.SetPersistent("%AUTOID%", -0.05), 0, 1)</onClick>
+			</COLLIDER_EVENT>
+			<COLOR_SHIFT id="1">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Generic_IntLight") &lt; 1)</variable>
+			</COLOR_SHIFT>
+			<COLOR_SHIFT id="2">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Generic_IntLight") &gt; 0)</variable>
+			</COLOR_SHIFT>
+			<TEXTURE_SHIFT id="0">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Generic_IntLight") &lt; 1)</variable>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="1">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Generic_IntLight") &gt; 0)</variable>
+			</TEXTURE_SHIFT>
+			<TEXT_LABEL id="0">
+				<text>CABIN$$$WORK</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>BRIGHT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<text>DIM</text>
+			</TEXT_LABEL>
+			<INT_LIGHT>
+				<name>Interior Lights</name>
+				<lightName>Point light, PointLight</lightName>
+				<intensity>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Generic_IntLight"))</intensity>
+				<color>255, fc.Select(fc.GetPersistentAsNumber("MAS_Cabin_NightMode") > 0, 0, 230), fc.Select(fc.GetPersistentAsNumber("MAS_Cabin_NightMode") > 0, 0, 215)</color>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Generic_IntLight"))</variable>
+			</INT_LIGHT>
+		</prop>
+		<prop>
+			<name>MAS_FASA_pb_SH03_B2_Cabin_Spot_Dimmer</name>
+			<style>SH03 DoubleCollider Dimmer</style>
+			<COLLIDER_EVENT id="0">
+				<onClick>fc.AddPersistentClamped("MAS_Cabin_Spotlight", fc.SetPersistent("%AUTOID%", 0.05), 0, 1)</onClick>
+			</COLLIDER_EVENT>
+			<COLLIDER_EVENT id="1">
+				<onClick>fc.AddPersistentClamped("MAS_Cabin_Spotlight", fc.SetPersistent("%AUTOID%", -0.05), 0, 1)</onClick>
+			</COLLIDER_EVENT>
+			<COLOR_SHIFT id="1">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Cabin_Spotlight") &lt; 1)</variable>
+			</COLOR_SHIFT>
+			<COLOR_SHIFT id="2">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Cabin_Spotlight") &gt; 0)</variable>
+			</COLOR_SHIFT>
+			<TEXTURE_SHIFT id="0">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Cabin_Spotlight") &lt; 1)</variable>
+			</TEXTURE_SHIFT>
+			<TEXTURE_SHIFT id="1">
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Cabin_Spotlight") &gt; 0)</variable>
+			</TEXTURE_SHIFT>
+			<TEXT_LABEL id="0">
+				<text>CABIN$$$SPOT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="1">
+				<text>BRIGHT</text>
+			</TEXT_LABEL>
+			<TEXT_LABEL id="2">
+				<text>DIM</text>
+			</TEXT_LABEL>
+			<INT_LIGHT>
+				<name>Interior Lights</name>
+				<lightName>Spotlight</lightName>
+				<intensity>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Cabin_Spotlight"))</intensity>
+				<color>255, fc.Select(fc.GetPersistentAsNumber("MAS_Cabin_NightMode") > 0, 0, 230), fc.Select(fc.GetPersistentAsNumber("MAS_Cabin_NightMode") > 0, 0, 215)</color>
+				<variable>fc.Conditioned(fc.GetPersistentAsNumber("MAS_Cabin_Spotlight"))</variable>
+			</INT_LIGHT>
+		</prop>
+
+	</PushButton>
+</PropConfig>
