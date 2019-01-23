@@ -1,0 +1,7 @@
+MAS FASA Apollo CM configs by MOARdV, licensed CC-BY-NC-SA.
+
+FASA is licensed CC-BY-NC-SA per the terms for the transfer of FASA to NathanKell, outlined
+in https://github.com/KSP-RO/FASA-RO/blob/master/GameData/FASA/Eula-License.txt.
+
+The FASA Apollo models and textures are originally by DennyTX, used in FASA with permission.
+DennyTX has granted permission for these models to be included in MOARdVPlus separately from FASA.
