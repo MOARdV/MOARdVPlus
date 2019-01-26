@@ -55,3 +55,9 @@ to be generic enough for every possible use.
 Read the manual.
 
 Seriously, look on the [wiki](https://github.com/MOARdV/MOARdVPlus/wiki) for a manual that describes the crew stations aboard the command modules, and the CM's intended applications.
+
+## Changelog
+
+### v1.0.0 / 26 January 2019
+
+* Initial Release.  Complete MAS FASA RA-01 Retro IVA, in-progress MAS FASA GA-02 Glass IVA.
