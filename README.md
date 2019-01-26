@@ -16,18 +16,13 @@ like a whole different game.
 
 ## What's here?
 
-**CAUTION:** MOARdVPlus is in development.  You may download the current snapshot to try it out.  The RA-01 retro CM is
-ready for release (pending an offical BDB update), but the glass cockpit is *not* flight certified.  Use at your peril.
+Instructions for the completed IVAs are on the [MOARdVPlus wiki](https://github.com/MOARdV/MOARdVPlus/wiki).
 
-**COMING SOON!**
-
-The MAS FASA RA-01 CM, a [Bluedog Design Bureau](https://forum.kerbalspaceprogram.com/index.php?/topic/122020-14x-bluedog-design-bureau-stockalike-saturn-apollo-and-more-v142-i-numbered-this-update-before-ksp-updated-1feb2018/)-compatible Apollo command module derived from the FASA Apollo CM.  This version of the CM uses Apollo-era controls for almost all of the IVA.
+* The MAS FASA RA-01 CM, a [Bluedog Design Bureau](https://forum.kerbalspaceprogram.com/index.php?/topic/122020-14x-bluedog-design-bureau-stockalike-saturn-apollo-and-more-v142-i-numbered-this-update-before-ksp-updated-1feb2018/)-compatible Apollo command module derived from the FASA Apollo CM.  This version of the CM uses Apollo-era controls for almost all of the IVA.
 
 **FUTURE UPDATES**
 
-The MAS FASA GA-02 CM,a [Bluedog Design Bureau](https://forum.kerbalspaceprogram.com/index.php?/topic/122020-14x-bluedog-design-bureau-stockalike-saturn-apollo-and-more-v142-i-numbered-this-update-before-ksp-updated-1feb2018/)-compatible Apollo command module derived from the FASA Apollo CM.  This version of the CM is a modern glass cockpit style.
-
-When they're far enough along to mention, I'll mention them.
+* The MAS FASA GA-02 CM, a [Bluedog Design Bureau](https://forum.kerbalspaceprogram.com/index.php?/topic/122020-14x-bluedog-design-bureau-stockalike-saturn-apollo-and-more-v142-i-numbered-this-update-before-ksp-updated-1feb2018/)-compatible Apollo command module derived from the FASA Apollo CM.  This version of the CM is a modern glass cockpit style.  **CAUTION:** This IVA is under development.  Use at your peril.
 
 ## Required Mods
 
