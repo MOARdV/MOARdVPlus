@@ -945,7 +945,7 @@
 				<animationSpeed>1.0</animationSpeed>
 			</ANIMATION_PLAYER>
 			<ANIMATION_PLAYER id="1">
-				<name>Button press animation</name>
+				<name>Cover animation</name>
 				<animation>pb_Cover_Anim</animation>
 				<animationSpeed>1.0</animationSpeed>
 				<variable>fc.GetPersistentAsNumber("%AUTOID%-cover")</variable>
