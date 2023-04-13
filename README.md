@@ -2,6 +2,9 @@
 
 Advanced IVA designs for Kerbal Space Program, powered by MOARdV's Avionics Systems
 
+Please be aware that as of April 2023, this mod is no longer being updated.  It may or may not work with current versions of MAS.
+Caveat emptor, but good luck.  If you find this mod useful, please feel free updating it and releasing it yourself.
+
 ## What is this?
 
 MOARdV's [Avionics Systems](https://github.com/MOARdV/AvionicsSystems) is a complex plugin, with well over 800 functions plus
